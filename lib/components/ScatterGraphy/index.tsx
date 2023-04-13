@@ -8,7 +8,7 @@ import { Dot, Wrapper } from './style';
 import { ScatterGraphyProps } from './type';
 import { CallbackProps } from '../../utils/type';
 
-function ScatterGraphy({ src, duration = 500, size = 1, color = 'black' }: ScatterGraphyProps) {
+function ScatterGraphy({ src, duration = 500, size = 4, color = 'black' }: ScatterGraphyProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const [isHovered, setIsHovered] = useState<boolean>(false);

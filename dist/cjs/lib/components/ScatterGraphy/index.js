@@ -17,7 +17,7 @@ var coordinate_1 = require("../../utils/coordinate");
 var imageProcessing_1 = require("../../utils/imageProcessing");
 var style_1 = require("./style");
 function ScatterGraphy(_a) {
-    var src = _a.src, _b = _a.duration, duration = _b === void 0 ? 500 : _b, _c = _a.size, size = _c === void 0 ? 1 : _c, _d = _a.color, color = _d === void 0 ? 'black' : _d;
+    var src = _a.src, _b = _a.duration, duration = _b === void 0 ? 500 : _b, _c = _a.size, size = _c === void 0 ? 4 : _c, _d = _a.color, color = _d === void 0 ? 'black' : _d;
     var ref = (0, react_1.useRef)(null);
     var _e = (0, react_1.useState)(false), isHovered = _e[0], setIsHovered = _e[1];
     var _f = (0, react_1.useState)([]), coords = _f[0], setCoords = _f[1];

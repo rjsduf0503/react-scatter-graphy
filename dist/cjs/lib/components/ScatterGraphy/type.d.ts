@@ -1,6 +1,6 @@
 export interface ScatterGraphyProps {
     src: string;
-    duration: number;
+    duration?: number;
     size?: number;
     color?: string;
 }
