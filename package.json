@@ -1,14 +1,21 @@
 {
   "name": "react-scatter-graphy",
+  "version": "0.0.12",
   "description": "Image src based retro typography with scattering animation",
   "private": false,
-  "version": "0.0.6",
-  "module": "./dist/esm/index.js",
-  "main": "./dist/cjs/index.js",
-  "license": "MIT",
   "files": [
-    "dist/"
+    "dist"
   ],
+  "main": "./dist/react-scatter-graphy.umd.js",
+  "module": "./dist/react-scatter-graphy.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/react-scatter-graphy.es.js",
+      "require": "./dist/react-scatter-graphy.umd.js"
+    }
+  },
+  "license": "MIT",
   "keywords": [
     "typography",
     "scattering",
@@ -31,24 +38,25 @@
     "preview": "vite preview",
     "clean": "rimraf dist",
     "copy-files": "copyfiles README.md dist",
-    "tsc-build": "npm run clean && tsc -p tsconfig-esm.json && tsc -p tsconfig-cjs.json && npm run copy-files",
+    "tsc-build": "npm run clean && npm run build && npm run copy-files",
     "publish:npm": "npm run tsc-build && npm publish"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6"
+    "@emotion/styled": "^11.10.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "copyfiles": "^2.4.1",
-    "rimraf": "^5.0.0",
     "@types/ndarray": "^1.0.11",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.0",
     "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "vite": "^4.2.0",
+    "vite-plugin-dts": "^2.3.0"
   }
 }

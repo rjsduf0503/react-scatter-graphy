@@ -1,12 +1,32 @@
-import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'node:path';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
-  return {
-    define: {
-      __APP_ENV__: env.APP_ENV,
+export default defineConfig({
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+    }),
+  ],
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, 'lib/index.ts'),
+      name: 'ReactScatterGraphy',
+      formats: ['es', 'umd'],
+      fileName: (format) => `react-scatter-graphy.${format}.js`,
     },
-    plugins: [react()],
-  };
+    rollupOptions: {
+      external: ['react', 'react-dom', '@emotion/react', '@emotion/styled'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          '@emotion/react': 'emotion',
+          '@emotion/styled': 'styled',
+        },
+      },
+    },
+  },
 });
