@@ -837,10 +837,10 @@ react-refresh@^0.14.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
-react-scatter-graphy@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/react-scatter-graphy/-/react-scatter-graphy-0.0.12.tgz#740e7e09dc3b435fa7a02ef9847fe3467eea15ef"
-  integrity sha512-WT8mLup/0mlmqV5cUMCY+zBTDzoty44NT2fPc2e8CmxPFdRgkFBqE6mT4+4cDnLvfGa/zdjP8Dy8sLMQiHvm2A==
+react-scatter-graphy@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/react-scatter-graphy/-/react-scatter-graphy-0.1.2.tgz#8cfbd87786f1665ae8afe4965a63238c9bfd6520"
+  integrity sha512-kmae2l/PTDtjiQcSO+gkKwru49H0+IfA8b+OY/RxFzSCr2Ai6NabpNRMhb+AS+48EPmVQbzwLz0qUc+Z+zSzEQ==
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"

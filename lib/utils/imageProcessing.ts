@@ -1,24 +1,26 @@
 import { ImageProcessingProps } from './type';
 
-export function imageProcessing({ maxWidth, size, src, callback }: ImageProcessingProps) {
+export function imageProcessing({ maxWidth, src, callback }: ImageProcessingProps) {
   const image = new Image();
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
 
   image.crossOrigin = 'Anonymous';
   image.style.imageRendering = 'crisp-edges';
 
   image.onload = () => {
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
     if (!context) return;
 
     const width = maxWidth,
       height = (image.height * maxWidth) / image.width;
+    const isHorizontal = width >= height;
+    const s = isHorizontal ? image.width / width / 10 : image.height / height / 10;
+    const scale = (Math.sqrt(width * height) / (isHorizontal ? width : height)) * s;
 
     (canvas.width = width), (canvas.height = height);
-
-    context.scale(0.5 / size, 0.5 / size);
+    context.scale(scale, scale);
     context.imageSmoothingEnabled = false;
-    context.drawImage(image, 0, 0, width * 2, height * 2);
+    context.drawImage(image, 0, 0, width, height);
 
     const imageData = context.getImageData(0, 0, width, height);
     const pixels = new Uint8Array(imageData!.data);
@@ -52,7 +54,7 @@ export function imageProcessing({ maxWidth, size, src, callback }: ImageProcessi
       ((v[1] - minY) * height) / h,
     ]);
 
-    callback({ error: null, coords, height });
+    callback({ error: null, coords, height, pixelSize: isHorizontal ? width / w : height / h });
   };
 
   image.onerror = (error) => {

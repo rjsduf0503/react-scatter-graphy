@@ -22,8 +22,40 @@ export const Default: Story = {
     </div>
   ),
   args: {
-    src: '/stories/assets/ex.png',
-    size: 5,
+    src: '/stories/assets/horizontal.png',
+    size: 1,
+    duration: 500,
+    color: 'black',
+  },
+};
+
+export const Kakao: Story = {
+  render: (args: ScatterGraphyProps) => (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '50%' }}>
+        <ScatterGraphy {...args} />
+      </div>
+    </div>
+  ),
+  args: {
+    src: '/stories/assets/kakao.png',
+    size: 1,
+    duration: 500,
+    color: 'yellow',
+  },
+};
+
+export const Vertical: Story = {
+  render: (args: ScatterGraphyProps) => (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '50%' }}>
+        <ScatterGraphy {...args} />
+      </div>
+    </div>
+  ),
+  args: {
+    src: '/stories/assets/vertical.png',
+    size: 1,
     duration: 500,
     color: 'black',
   },
