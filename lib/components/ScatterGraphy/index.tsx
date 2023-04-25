@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { getRandomCoordinate } from '../../utils/coordinate';
 import { debounce } from '../../utils/debounce';
@@ -6,20 +6,20 @@ import { imageProcessing } from '../../utils/imageProcessing';
 
 import { Dot, Wrapper } from './style';
 
-import { CallbackProps } from '../../utils/type';
+import { ImageProcessingResult } from '../../utils/type';
 import { ScatterGraphyProps } from './type';
 
 function ScatterGraphy({
   src,
   duration = 500,
   size = 1,
-  color = 'black',
+  color,
   resizeDelay = 500,
 }: ScatterGraphyProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [coords, setCoords] = useState<number[][]>([]);
+  const [coords, setCoords] = useState<[number, number, string][]>([]);
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
   const [pixelSize, setPixelSize] = useState<number>(1);
@@ -30,20 +30,16 @@ function ScatterGraphy({
     const maxWidth = ref.current.parentElement.clientWidth;
     setWidth(maxWidth);
 
-    imageProcessing({
-      maxWidth,
-      src,
-      callback: ({ error, coords, height, pixelSize }: CallbackProps) => {
-        if (error || !coords || !height || !pixelSize) {
-          console.error(error);
-          return;
-        }
+    (async () => {
+      const { coords, height, pixelSize }: ImageProcessingResult = await imageProcessing({
+        maxWidth,
+        src,
+      });
 
-        setCoords(coords);
-        setHeight(height);
-        setPixelSize(size * pixelSize);
-      },
-    });
+      setCoords(coords);
+      setHeight(height);
+      setPixelSize(size * pixelSize);
+    })();
   }, [ref, src, setCoords, setHeight, setPixelSize, setWidth, size, imageProcessing]);
 
   const debouncedImageProcessing = useMemo(
@@ -51,12 +47,14 @@ function ScatterGraphy({
     [imageProcessingByWidth, resizeDelay],
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     imageProcessingByWidth();
     window.addEventListener('resize', debouncedImageProcessing);
 
     return () => window.removeEventListener('resize', debouncedImageProcessing);
   }, [imageProcessingByWidth, debouncedImageProcessing]);
+
+  const memoizedGetRandomCoordinate = useCallback(getRandomCoordinate, []);
 
   return (
     <Wrapper
@@ -67,15 +65,15 @@ function ScatterGraphy({
       }}
       ref={ref}
     >
-      {coords.map((coord: number[], i: number) => (
+      {coords.map((coord: [number, number, string], i: number) => (
         <Dot
           key={i}
           isHovered={isHovered}
           size={pixelSize}
           duration={duration}
-          color={color}
-          coord={coord}
-          randomCoord={getRandomCoordinate({ maxWidth: width, maxHeight: height })}
+          color={color || coord[2]}
+          coord={[coord[0], coord[1]]}
+          randomCoord={memoizedGetRandomCoordinate({ maxWidth: width, maxHeight: height })}
         />
       ))}
     </Wrapper>

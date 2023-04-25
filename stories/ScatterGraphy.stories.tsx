@@ -25,23 +25,6 @@ export const Default: Story = {
     src: '/stories/assets/horizontal.png',
     size: 1,
     duration: 500,
-    color: 'black',
-  },
-};
-
-export const Kakao: Story = {
-  render: (args: ScatterGraphyProps) => (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={{ width: '50%' }}>
-        <ScatterGraphy {...args} />
-      </div>
-    </div>
-  ),
-  args: {
-    src: '/stories/assets/kakao.png',
-    size: 1,
-    duration: 500,
-    color: 'yellow',
   },
 };
 
@@ -57,6 +40,35 @@ export const Vertical: Story = {
     src: '/stories/assets/vertical.png',
     size: 1,
     duration: 500,
-    color: 'black',
+  },
+};
+
+export const Kakao: Story = {
+  render: (args: ScatterGraphyProps) => (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '50%' }}>
+        <ScatterGraphy {...args} />
+      </div>
+    </div>
+  ),
+  args: {
+    src: '/stories/assets/kakao.png',
+    size: 1,
+    duration: 500,
+  },
+};
+
+export const Instagram: Story = {
+  render: (args: ScatterGraphyProps) => (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '50%' }}>
+        <ScatterGraphy {...args} />
+      </div>
+    </div>
+  ),
+  args: {
+    src: '/stories/assets/instagram.png',
+    size: 1,
+    duration: 500,
   },
 };

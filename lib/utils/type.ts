@@ -1,6 +1,6 @@
 export interface CallbackProps {
   error: Event | null;
-  coords?: number[][];
+  coords?: [number, number, string][];
   height?: number;
   pixelSize?: number;
 }
@@ -8,7 +8,12 @@ export interface CallbackProps {
 export interface ImageProcessingProps {
   maxWidth: number;
   src: string;
-  callback: ({ error, coords, height }: CallbackProps) => void;
+}
+
+export interface ImageProcessingResult {
+  coords: [number, number, string][];
+  height: number;
+  pixelSize: number;
 }
 
 export interface GetRandomCoordinateProps {

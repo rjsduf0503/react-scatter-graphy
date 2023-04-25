@@ -1,2 +1,2 @@
-import { ImageProcessingProps } from './type';
-export declare function imageProcessing({ maxWidth, src, callback }: ImageProcessingProps): void;
+import { ImageProcessingProps, ImageProcessingResult } from './type';
+export declare function imageProcessing({ maxWidth, src, }: ImageProcessingProps): Promise<ImageProcessingResult>;

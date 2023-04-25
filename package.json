@@ -1,6 +1,6 @@
 {
   "name": "react-scatter-graphy",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Image src based retro typography with scattering animation",
   "private": false,
   "files": [
@@ -20,7 +20,10 @@
     "typography",
     "scattering",
     "scattered typography",
-    "animated typography"
+    "animated typography",
+    "animated image",
+    "scatterd image",
+    "image"
   ],
   "author": "Geonyeol Ryu <rjsduf0503@gmail.com> (https://github.com/rjsduf0503)",
   "repository": {
