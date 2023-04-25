@@ -1,14 +1,21 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { getRandomCoordinate } from '../../utils/coordinate';
+import { debounce } from '../../utils/debounce';
 import { imageProcessing } from '../../utils/imageProcessing';
 
 import { Dot, Wrapper } from './style';
 
-import { ScatterGraphyProps } from './type';
 import { CallbackProps } from '../../utils/type';
+import { ScatterGraphyProps } from './type';
 
-function ScatterGraphy({ src, duration = 500, size = 1, color = 'black' }: ScatterGraphyProps) {
+function ScatterGraphy({
+  src,
+  duration = 500,
+  size = 1,
+  color = 'black',
+  resizeDelay = 500,
+}: ScatterGraphyProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -17,7 +24,7 @@ function ScatterGraphy({ src, duration = 500, size = 1, color = 'black' }: Scatt
   const [height, setHeight] = useState<number>(0);
   const [pixelSize, setPixelSize] = useState<number>(1);
 
-  useLayoutEffect(() => {
+  const imageProcessingByWidth = useCallback(() => {
     if (!ref.current || !ref.current.parentElement) return;
 
     const maxWidth = ref.current.parentElement.clientWidth;
@@ -37,7 +44,19 @@ function ScatterGraphy({ src, duration = 500, size = 1, color = 'black' }: Scatt
         setPixelSize(size * pixelSize);
       },
     });
-  }, []);
+  }, [ref, src, setCoords, setHeight, setPixelSize, setWidth, size, imageProcessing]);
+
+  const debouncedImageProcessing = useMemo(
+    () => debounce(imageProcessingByWidth, resizeDelay),
+    [imageProcessingByWidth, resizeDelay],
+  );
+
+  useLayoutEffect(() => {
+    imageProcessingByWidth();
+    window.addEventListener('resize', debouncedImageProcessing);
+
+    return () => window.removeEventListener('resize', debouncedImageProcessing);
+  }, [imageProcessingByWidth, debouncedImageProcessing]);
 
   return (
     <Wrapper

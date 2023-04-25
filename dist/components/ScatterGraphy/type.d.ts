@@ -3,4 +3,5 @@ export interface ScatterGraphyProps {
     duration?: number;
     size?: number;
     color?: string;
+    resizeDelay?: number;
 }
