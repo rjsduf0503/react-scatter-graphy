@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 
-import { ScatterGraphyProps } from '../lib/components/ScatterGraphy/type';
-import { ScatterGraphy } from '../lib/index';
+import { ScatterGraphyProps } from '@/components/ScatterGraphy/type';
+import { ScatterGraphy } from '@/index';
 
 const meta: Meta<typeof ScatterGraphy> = {
   title: 'Components/ScatterGraphy',
@@ -25,6 +24,7 @@ export const Default: Story = {
     src: '/stories/assets/horizontal.png',
     size: 1,
     duration: 500,
+    resizeDelay: 500,
   },
 };
 
@@ -40,6 +40,7 @@ export const Vertical: Story = {
     src: '/stories/assets/vertical.png',
     size: 1,
     duration: 500,
+    resizeDelay: 500,
   },
 };
 
@@ -55,6 +56,7 @@ export const Kakao: Story = {
     src: '/stories/assets/kakao.png',
     size: 1,
     duration: 500,
+    resizeDelay: 500,
   },
 };
 
@@ -70,5 +72,6 @@ export const Instagram: Story = {
     src: '/stories/assets/instagram.png',
     size: 1,
     duration: 500,
+    resizeDelay: 500,
   },
 };

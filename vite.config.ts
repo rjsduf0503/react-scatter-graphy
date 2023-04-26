@@ -1,5 +1,6 @@
-import react from '@vitejs/plugin-react';
 import path from 'node:path';
+
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -23,10 +24,13 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          '@emotion/react': 'emotion',
-          '@emotion/styled': 'styled',
+          '@emotion/react': '@emotion/react',
+          '@emotion/styled': '@emotion/styled',
         },
       },
     },
+  },
+  resolve: {
+    alias: [{ find: '@', replacement: '/lib' }],
   },
 });

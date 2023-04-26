@@ -1,3 +1,5 @@
+import path from 'path';
+
 module.exports = {
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -15,5 +17,12 @@ module.exports = {
   },
   docs: {
     autodocs: true,
+  },
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../lib'),
+    };
+    return config;
   },
 };

@@ -1,13 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { getRandomCoordinate } from '../../utils/coordinate';
-import { debounce } from '../../utils/debounce';
-import { imageProcessing } from '../../utils/imageProcessing';
-
 import { Dot, Wrapper } from './style';
-
-import { ImageProcessingResult } from '../../utils/type';
 import { ScatterGraphyProps } from './type';
+
+import { debounce, getRandomCoordinate, imageProcessing } from '@/utils';
+import { ImageProcessingResult } from '@/utils/type';
 
 function ScatterGraphy({
   src,
@@ -40,7 +37,7 @@ function ScatterGraphy({
       setHeight(height);
       setPixelSize(size * pixelSize);
     })();
-  }, [ref, src, setCoords, setHeight, setPixelSize, setWidth, size, imageProcessing]);
+  }, [ref, src, setCoords, setHeight, setPixelSize, setWidth, size]);
 
   const debouncedImageProcessing = useMemo(
     () => debounce(imageProcessingByWidth, resizeDelay),

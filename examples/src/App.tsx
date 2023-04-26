@@ -1,4 +1,5 @@
 import { ScatterGraphy } from 'react-scatter-graphy';
+
 import horizontal from './horizontal.png';
 
 function App() {
