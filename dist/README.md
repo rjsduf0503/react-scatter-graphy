@@ -1,6 +1,8 @@
 # react-scatter-graphy
 
-Image src based retro typography with scattering animation
+Image src based retro typography with scattering animation.
+
+When you `hover` the mouse cursor over the `scattered pixels`, it is animated as the original image.
 
 > You can also use react-scatter-graphy not only typography image but also normal image
 
