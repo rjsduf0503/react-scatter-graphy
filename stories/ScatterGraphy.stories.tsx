@@ -21,7 +21,7 @@ export const Default: Story = {
     </div>
   ),
   args: {
-    src: '/stories/assets/horizontal.png',
+    src: '/horizontal.png',
     size: 1,
     duration: 500,
     resizeDelay: 500,
@@ -37,7 +37,7 @@ export const Vertical: Story = {
     </div>
   ),
   args: {
-    src: '/stories/assets/vertical.png',
+    src: '/vertical.png',
     size: 1,
     duration: 500,
     resizeDelay: 500,
@@ -53,7 +53,7 @@ export const Kakao: Story = {
     </div>
   ),
   args: {
-    src: '/stories/assets/kakao.png',
+    src: '/kakao.png',
     size: 1,
     duration: 500,
     resizeDelay: 500,
@@ -69,7 +69,7 @@ export const Instagram: Story = {
     </div>
   ),
   args: {
-    src: '/stories/assets/instagram.png',
+    src: '/instagram.png',
     size: 1,
     duration: 500,
     resizeDelay: 500,
