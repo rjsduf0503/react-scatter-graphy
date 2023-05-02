@@ -20,6 +20,6 @@
       "@/*": ["lib/*"]
     }
   },
-  "include": ["lib", "stories"],
+  "include": ["lib", "stories", "lib/react-app-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,3 +1,5 @@
+import { HorizontalImg, InstagramImg, KakaoImg, VerticalImg } from './assets/index';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ScatterGraphyProps } from '@/components/ScatterGraphy/type';
@@ -21,7 +23,7 @@ export const Default: Story = {
     </div>
   ),
   args: {
-    src: '/horizontal.png',
+    src: HorizontalImg,
     size: 1,
     duration: 500,
     resizeDelay: 500,
@@ -37,7 +39,7 @@ export const Vertical: Story = {
     </div>
   ),
   args: {
-    src: '/vertical.png',
+    src: InstagramImg,
     size: 1,
     duration: 500,
     resizeDelay: 500,
@@ -53,7 +55,7 @@ export const Kakao: Story = {
     </div>
   ),
   args: {
-    src: '/kakao.png',
+    src: KakaoImg,
     size: 1,
     duration: 500,
     resizeDelay: 500,
@@ -69,7 +71,7 @@ export const Instagram: Story = {
     </div>
   ),
   args: {
-    src: '/instagram.png',
+    src: VerticalImg,
     size: 1,
     duration: 500,
     resizeDelay: 500,
