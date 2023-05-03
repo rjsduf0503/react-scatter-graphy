@@ -12,3 +12,4 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          script: sed -i 's/CHROMATIC_HOMEPAGE_PLACEHOLDER/https:\/\/chromatic.com\/builds\/${{ env.CHROMATIC_BUILD_ID }}\/storybook/g' package.json

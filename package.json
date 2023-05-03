@@ -34,7 +34,7 @@
     "url": "https://github.com/rjsduf0503/react-scatter-graphy/issues",
     "email": "rjsduf0503@gmail.com"
   },
-  "homepage": "https://644d201da19496e3a4f1541a-clzvasihxo.chromatic.com/?path=/docs/components-scattergraphy--docs",
+  "homepage": "https://chromatic.com/builds/${{ env.CHROMATIC_BUILD_ID }}/storybook",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
