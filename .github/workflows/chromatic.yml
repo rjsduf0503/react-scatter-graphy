@@ -24,4 +24,4 @@ jobs:
       - run: |
           sed -i "s|CHROMATIC_HOMEPAGE|${{ steps.chromatic.outputs.storybookUrl }}|" package.json
       - run: yarn publish:npm-outDir
-      - run: cp -R my-dist/ $GITHUB_WORKSPACE/dist/
+      - run: cp -R temp-dist/ $GITHUB_WORKSPACE/dist/
