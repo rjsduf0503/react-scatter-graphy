@@ -1,0 +1,27 @@
+name: 'react-scatter-graphy storybook deploy and npm publish'
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: yarn
+      - uses: chromaui/action@v1
+        id: chromatic
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_AUTH_TOKEN }}
+          npm config set access public
+      - run: |
+          sed -i "s|CHROMATIC_HOMEPAGE|${{ steps.chromatic.outputs.storybookUrl }}|" package.json
+      - run: yarn publish:npm-outDir
+      - run: cp -R my-dist/ $GITHUB_WORKSPACE/dist/
