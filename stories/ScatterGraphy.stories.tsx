@@ -14,38 +14,6 @@ export default meta;
 
 type Story = StoryObj<typeof ScatterGraphy>;
 
-export const Default: Story = {
-  render: (args: ScatterGraphyProps) => (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={{ width: '50%' }}>
-        <ScatterGraphy {...args} />
-      </div>
-    </div>
-  ),
-  args: {
-    src: HorizontalImg,
-    size: 1,
-    duration: 500,
-    resizeDelay: 500,
-  },
-};
-
-export const Vertical: Story = {
-  render: (args: ScatterGraphyProps) => (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={{ width: '50%' }}>
-        <ScatterGraphy {...args} />
-      </div>
-    </div>
-  ),
-  args: {
-    src: InstagramImg,
-    size: 1,
-    duration: 500,
-    resizeDelay: 500,
-  },
-};
-
 export const Kakao: Story = {
   render: (args: ScatterGraphyProps) => (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -63,6 +31,38 @@ export const Kakao: Story = {
 };
 
 export const Instagram: Story = {
+  render: (args: ScatterGraphyProps) => (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '50%' }}>
+        <ScatterGraphy {...args} />
+      </div>
+    </div>
+  ),
+  args: {
+    src: InstagramImg,
+    size: 1,
+    duration: 500,
+    resizeDelay: 500,
+  },
+};
+
+export const Horizontal: Story = {
+  render: (args: ScatterGraphyProps) => (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '50%' }}>
+        <ScatterGraphy {...args} />
+      </div>
+    </div>
+  ),
+  args: {
+    src: HorizontalImg,
+    size: 1,
+    duration: 500,
+    resizeDelay: 500,
+  },
+};
+
+export const Vertical: Story = {
   render: (args: ScatterGraphyProps) => (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div style={{ width: '50%' }}>
