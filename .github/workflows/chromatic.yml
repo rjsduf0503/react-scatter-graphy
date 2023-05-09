@@ -13,8 +13,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: ${{ github.head_ref }}
-          push: true
+          repository: rjsduf0503/react-scatter-graphy
+          token: ${{ secrets.GIT_AUTH_TOKEN }}
       - run: yarn
       - run: mkdir -p dist
       - uses: chromaui/action@v1
@@ -28,13 +28,14 @@ jobs:
       - run: |
           sed -i "s|CHROMATIC_HOMEPAGE|${{ steps.chromatic.outputs.storybookUrl }}|" package.json
       - run: yarn publish:npm-outDir
+      - run: |
+          sed -i "s|${{ steps.chromatic.outputs.storybookUrl }}|CHROMATIC_HOMEPAGE|" package.json
       - run: cp -R build/* dist/
-      - uses: LasyIsLazy/github-upload-action@v0.1.0
-        with:
-          access-token: ${{ secrets.GIT_AUTH_TOKEN }}
-          file-path: dist/
-          owner: rjsduf0503
-          repo: react-scatter-graphy
-          remote-dir: dist
-          commit-message: 'build: automate deploy dist'
-          branch-name: dist-build
+      - run: |
+          git config --global user.name "류건열"
+          git config --global user.email "rjsduf0503@naver.com"
+
+      - run: |
+          git add dist
+          git commit -am 'build: automate deploy dist'
+          git push -f https://${{ secrets.GIT_AUTH_TOKEN }}@github.com/rjsduf0503/react-scatter-graphy.git HEAD:dist-build

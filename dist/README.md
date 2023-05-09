@@ -5,6 +5,8 @@ Image src based retro typography with scattering animation.
 When you `hover` the mouse cursor over the `scattered pixels`, it is animated as the original image.
 
 > You can also use react-scatter-graphy not only typography image but also normal image
+>
+> Currently, PNG formats are more effective than JPEG formats.
 
 <p align="center">
   <img width='400' src="https://user-images.githubusercontent.com/34560965/234566023-9e365576-1c97-4513-9115-8f4d96134873.gif" alt="example-instagram" />
