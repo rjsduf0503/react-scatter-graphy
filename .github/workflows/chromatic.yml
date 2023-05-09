@@ -12,7 +12,11 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.head_ref }}
+          push: true
       - run: yarn
+      - run: mkdir -p dist
       - uses: chromaui/action@v1
         id: chromatic
         with:
@@ -24,4 +28,13 @@ jobs:
       - run: |
           sed -i "s|CHROMATIC_HOMEPAGE|${{ steps.chromatic.outputs.storybookUrl }}|" package.json
       - run: yarn publish:npm-outDir
-      - run: cp -R temp-dist/ $GITHUB_WORKSPACE/dist/
+      - run: cp -R build/* dist/
+      - uses: LasyIsLazy/github-upload-action@v0.1.0
+        with:
+          access-token: ${{ secrets.GIT_AUTH_TOKEN }}
+          file-path: dist/
+          owner: rjsduf0503
+          repo: react-scatter-graphy
+          remote-dir: dist
+          commit-message: 'build: automate deploy dist'
+          branch-name: dist-build
