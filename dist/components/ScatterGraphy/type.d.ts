@@ -3,5 +3,6 @@ export interface ScatterGraphyProps {
     duration?: number;
     size?: number;
     color?: string;
+    shape?: 'square' | 'circle';
     resizeDelay?: number;
 }

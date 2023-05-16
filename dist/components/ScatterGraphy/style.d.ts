@@ -10,6 +10,7 @@ export declare const Dot: import("@emotion/styled").StyledComponent<{
     size: number;
     duration: number;
     color: string;
+    shape: 'square' | 'circle';
     coord: number[];
     randomCoord: number[];
 }, import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, {}>;
