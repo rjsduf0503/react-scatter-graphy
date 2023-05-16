@@ -22,9 +22,16 @@ export const Kakao: Story = {
       </div>
     </div>
   ),
+  argTypes: {
+    shape: {
+      options: ['circle', 'square'],
+      control: { type: 'radio' },
+    },
+  },
   args: {
     src: KakaoImg,
     size: 1,
+    shape: 'square',
     duration: 500,
     resizeDelay: 500,
   },
@@ -38,12 +45,8 @@ export const Instagram: Story = {
       </div>
     </div>
   ),
-  args: {
-    src: InstagramImg,
-    size: 1,
-    duration: 500,
-    resizeDelay: 500,
-  },
+  argTypes: { ...Kakao.argTypes },
+  args: { ...Kakao.args, src: InstagramImg },
 };
 
 export const Horizontal: Story = {
@@ -54,12 +57,8 @@ export const Horizontal: Story = {
       </div>
     </div>
   ),
-  args: {
-    src: HorizontalImg,
-    size: 1,
-    duration: 500,
-    resizeDelay: 500,
-  },
+  argTypes: { ...Kakao.argTypes },
+  args: { ...Kakao.args, src: HorizontalImg },
 };
 
 export const Vertical: Story = {
@@ -70,10 +69,6 @@ export const Vertical: Story = {
       </div>
     </div>
   ),
-  args: {
-    src: VerticalImg,
-    size: 1,
-    duration: 500,
-    resizeDelay: 500,
-  },
+  argTypes: { ...Kakao.argTypes },
+  args: { ...Kakao.args, src: VerticalImg },
 };

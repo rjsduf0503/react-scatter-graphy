@@ -12,6 +12,7 @@ export const Dot = styled.span<{
   size: number;
   duration: number;
   color: string;
+  shape: 'square' | 'circle';
   coord: number[];
   randomCoord: number[];
 }>`
@@ -27,6 +28,7 @@ export const Dot = styled.span<{
   display: inline-block;
   background-color: ${({ color }) => color};
   transition: ${({ duration }) => `ease ${duration}ms ${duration}ms`};
+  border-radius: ${({ shape }) => (shape === 'circle' ? '100%' : null)};
 
   ${({ size }) =>
     size &&
@@ -34,11 +36,10 @@ export const Dot = styled.span<{
       width: ${size}px;
       height: ${size}px;
     `}
-
   ${({ isHovered, coord }) =>
     isHovered &&
     css`
       top: ${coord[1]}px;
       left: ${coord[0]}px;
-    `}
+    `};
 `;
