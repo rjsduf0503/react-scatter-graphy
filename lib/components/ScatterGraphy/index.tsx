@@ -11,6 +11,7 @@ function ScatterGraphy({
   duration = 500,
   size = 1,
   color,
+  shape = 'square',
   resizeDelay = 500,
 }: ScatterGraphyProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -69,6 +70,7 @@ function ScatterGraphy({
           size={pixelSize}
           duration={duration}
           color={color || coord[2]}
+          shape={shape}
           coord={[coord[0], coord[1]]}
           randomCoord={memoizedGetRandomCoordinate({ maxWidth: width, maxHeight: height })}
         />

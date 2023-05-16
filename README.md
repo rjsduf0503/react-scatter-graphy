@@ -48,6 +48,7 @@ function App() {
       <ScatterGraphy
         src={yourImage}
         size={pixelSize}
+        shape={pixelShape}
         duration={animationDuration}
         color={pixelColor}
         resizeDelay={delayWhenResize}
@@ -61,13 +62,14 @@ export default App;
 
 ## Props
 
-| Prop          | Type   |      Default      | Required | Description                                                                                   |
-| :------------ | :----- | :---------------: | :------: | :-------------------------------------------------------------------------------------------- |
-| `src`         | string |                   |    ✓     | Image src.                                                                                    |
-| `size`        | number |         1         |          | Number to multiply automatically calculated pixel size. In most cases, 1 is the optimal size. |
-| `duration`    | number |        500        |          | Pixel animation duration.                                                                     |
-| `color`       | color  | Image pixel color |          | Image pixel color. The default value is set to the pixel color of the image.                  |
-| `resizeDelay` | number |        500        |          | Delay when screen resize event occurs.                                                        |
+| Prop          | Type               |      Default      | Required | Description                                                                                   |
+| :------------ | :----------------- | :---------------: | :------: | :-------------------------------------------------------------------------------------------- |
+| `src`         | string             |                   |    ✓     | Image src.                                                                                    |
+| `size`        | number             |         1         |          | Number to multiply automatically calculated pixel size. In most cases, 1 is the optimal size. |
+| `shape`       | 'circle \| square' |      square       |          | Pixel shape.                                                                                  |
+| `duration`    | number             |        500        |          | Pixel animation duration.                                                                     |
+| `color`       | color              | Image pixel color |          | Image pixel color. The default value is set to the pixel color of the image.                  |
+| `resizeDelay` | number             |        500        |          | Delay when screen resize event occurs.                                                        |
 
 ## Development
 
