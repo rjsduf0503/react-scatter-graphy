@@ -22,19 +22,20 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+      - run: yarn cache clean
+      - run: yarn tsc-build:outDir
+      - run: cp -R build/* dist/
       - run: |
           npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_AUTH_TOKEN }}
           npm config set access public
       - run: |
           sed -i "s|CHROMATIC_HOMEPAGE|${{ steps.chromatic.outputs.storybookUrl }}|" package.json
-      - run: yarn publish:npm-outDir
+      - run: yarn publish
       - run: |
           sed -i "s|${{ steps.chromatic.outputs.storybookUrl }}|CHROMATIC_HOMEPAGE|" package.json
-      - run: cp -R build/* dist/
       - run: |
           git config --global user.name "류건열"
           git config --global user.email "rjsduf0503@naver.com"
-
       - run: |
           git add dist
           git commit -am 'build: automate deploy dist'
