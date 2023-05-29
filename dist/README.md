@@ -78,6 +78,16 @@ $ yarn
 $ yarn storybook
 ```
 
+## Cautions
+
+If you are using `vite`, you have to remove below code in `vite.config.js`.
+
+```js
+define: {
+  global: 'window',
+},
+```
+
 ## Maintainers
 
 This project is maintained by Geonyeol Ryu.
